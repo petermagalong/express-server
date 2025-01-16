@@ -1,0 +1,62 @@
+POST http://localhost:8000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "winter",
+    "password": "peter1",
+    "role": "user"
+}
+
+###
+
+POST  http://localhost:8000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "winter",
+    "password": "peter11"
+}
+
+###
+
+POST  http://localhost:8000/api/auth/forgot-password
+Content-Type: application/json
+
+{
+    "username": "winter"
+}
+
+###
+
+PUT  http://localhost:8000/api/auth/reset-password/winter/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODNkNjY5MDE5ZjYyNTI4NDU3YWJmZiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM3MDY3Mjk4LCJleHAiOjE3MzcwNzA4OTh9.MYqHl4cA4Ecttg6iAex9-21EbDXXJMOdU6St3POxU94
+Content-Type: application/json
+
+{
+    "password": "peter11"
+}
+
+###
+
+GET  http://localhost:8000/api/users/user
+Content-Type: application/json
+
+{
+    "username": "winter", //peter1 // bea // winter
+    "password": "peter1" //peter1
+}
+
+###
+
+GET  http://localhost:8000/api/users/admin
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODNkNjY5MDE5ZjYyNTI4NDU3YWJmZiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM2Njk5NjMzLCJleHAiOjE3MzY3MDMyMzN9.O1XEqlfDED-2Ui6NPWSqE2gHEV87exJIuCjZgsMTipw
+
+###
+
+GET  http://localhost:8000/api/users/user
+Content-Type: application/json
+
+{
+    "username": "winter",
+    "password": "peter1"
+}
