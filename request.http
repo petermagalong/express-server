@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
     "username": "winter",
-    "password": "peter1"
+    "password": "peter11"
 }
 
 ###
@@ -28,7 +28,7 @@ Content-Type: application/json
 
 ###
 
-PUT  http://localhost:8000/api/auth/reset-password/winter/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODNkNjY5MDE5ZjYyNTI4NDU3YWJmZiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM3MDI1OTI3LCJleHAiOjE3MzcwMjk1Mjd9.OmReUNmCYsnA4i3FnGNQaWV2iKmnOoPN7jP4zbCVTug
+PUT  http://localhost:8000/api/auth/reset-password/winter/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ODNkNjY5MDE5ZjYyNTI4NDU3YWJmZiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM3MDY3Mjk4LCJleHAiOjE3MzcwNzA4OTh9.MYqHl4cA4Ecttg6iAex9-21EbDXXJMOdU6St3POxU94
 Content-Type: application/json
 
 {
