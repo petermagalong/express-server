@@ -36,4 +36,9 @@ src/
   - utils/ `(store code architectural / small snippets)`
   - validations/ `( input validation )`
   - index.js
-.env
+  - .env
+## References
+-Error handling 
+  - https://expressjs.com/en/guide/error-handling.html
+-JWT 
+  - https://www.npmjs.com/package/jsonwebtoken
