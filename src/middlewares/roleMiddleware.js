@@ -3,12 +3,12 @@ const authorizeRoles = (...roles) => {
         if(!roles.includes(req.user.role)) {
             return res.status(403).json({
                 success: false,
-                message: 'You are not authorized to access this route'
-            })
+                message: "You are not authorized to access this route"
+            });
         }
         next();
-    }
+    };
     
-}
+};
 
-module.exports = authorizeRoles
+module.exports = authorizeRoles;
