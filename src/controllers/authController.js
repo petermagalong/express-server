@@ -40,10 +40,12 @@ const login = async ( req, res) => {
             throw new AppError(false, "Invalid username or password", 401);
         }
 
-        const token = jwt.sign({id: user._id, role: user.role}, process.env.JWT_SECRET, {expiresIn: '1h'});
+        const secret = process.env.JWT_SECRET;
+        
+        const token = jwt.sign({...user}, secret, {expiresIn: '1h'});
 
         if(token){
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
                 message: 'Login successful',
                 token
@@ -110,10 +112,18 @@ const resetPassword = async (req, res) => {
         })
 
 }
+const getUserInfo = async (req, res) => {
+    return res.status(200).json({
+        success: true,
+        message: 'User information',
+        data: req.user
+    })
+}
 
 module.exports = {
     resetPassword,
     forgotPassword,
     register,
+    getUserInfo,
     login
 }
