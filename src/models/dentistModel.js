@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const availabilitySchema = new mongoose.Schema({
     dayOfWeek: {
         type: String,
-        enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        enum: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         required: true,
     },
     startTime: {
@@ -34,7 +34,7 @@ const unavailabilitySchema = new mongoose.Schema({
 const dentistSchema = new mongoose.Schema({
     userId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
         required: true,
         uniuqe: true,
     },
@@ -47,7 +47,7 @@ const dentistSchema = new mongoose.Schema({
         default: [],
     },
 
-})
+});
 
 module.exports = mongoose.model("Dentist", dentistSchema);
 
