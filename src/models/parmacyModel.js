@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const parmacySchema = new mongoose.Schema({
     userId:{
@@ -10,7 +10,7 @@ const parmacySchema = new mongoose.Schema({
         type: Date,
     },
 
-})
+});
 
 module.exports = mongoose.model("Parmacy", parmacySchema);
 

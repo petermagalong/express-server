@@ -9,13 +9,13 @@ exports.paginatedData = async (req,model,options = {}) => {
     const limit = parseInt(req.query.limit);
     const startIndex = (page - 1) * limit;
     const endIndex = startIndex + limit;
-    const results = {}
+    const results = {};
     if(startIndex > 0)
     {
         results.previous = {
             page: page - 1,
             limit
-        }
+        };
     }
     
     try{
@@ -24,23 +24,23 @@ exports.paginatedData = async (req,model,options = {}) => {
             results.next = {
                 page: page+1,
                 limit
-            }
+            };
         }
 
-        let query = model.find().skip(startIndex).limit(limit)
+        let query = model.find().skip(startIndex).limit(limit);
         if(options?.populate)
         {
-            const { path, select } = options.populate
-            query = query.populate(path, select)
+            const { path, select } = options.populate;
+            query = query.populate(path, select);
         }
         if(options?.select)
         {
-            query = query.select(options.select)
+            query = query.select(options.select);
         }
-        results.result = await query.exec()
+        results.result = await query.exec();
 
-        return {success: true, results}
+        return {success: true, results};
     } catch (error) {
-        return {success: false, message: error.message}
+        return {success: false, message: error.message};
     }
-}
+};
