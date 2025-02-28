@@ -5,13 +5,42 @@ const AppError = require("../utils/appError");
 
 const register = async ( req, res) => {
 
-    const {username, password, role} = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = new User({
+    const {
         username,
-        password: hashedPassword,
-        role
+        firstName,
+        lastName,
+        email,
+        middleName,
+        gender,
+        address,
+        password,
+        avatar,
+        birthday,
+        mobileNumber,
+        type
+    } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const userId = await User.findOne({username});
+    if(userId){
+        throw new AppError(false, "Username already exists", 400);
+    }
+    const emailExist = await User.findOne({email});
+    if(emailExist){
+        throw new AppError(false, "Email already exists", 400);
+    }
+    const newUser = new User({
+        avatar,
+        firstName,
+        lastName,
+        birthday,
+        email,
+        mobileNumber,
+        middleName,
+        gender,
+        address,
+        username,
+        password:hashedPassword,
+        type,
     });
     const result = await newUser.save();
 
@@ -24,6 +53,50 @@ const register = async ( req, res) => {
         message: "User created successfully",
     });
     
+};
+
+const updateUser = async (req, res) => {
+    const { _id:id } = req.user;
+    const {
+        firstName,
+        lastName,
+        middleName,
+        gender,
+        address,
+        password,
+        avatar,
+        birthday,
+        mobileNumber,
+        type
+    } = req.body;
+
+    const payload = {
+        firstName,
+        lastName,
+        middleName,
+        gender,
+        address,
+        password,
+        avatar,
+        birthday,
+        mobileNumber,
+        type
+    };
+    if(password){
+        const hashedPassword = await bcrypt.hash(password, 10);
+        payload.password = hashedPassword;
+
+    }
+    const user = await User
+        .findByIdAndUpdate(id, payload, { new: true });
+    if (!user) {
+        throw new AppError(false, "User not found", 404);
+    }
+    res.status(200).json({
+        success: true,
+        message: "User updated successfully",
+        data: user
+    });
 };
 
 const login = async ( req, res) => {
@@ -124,6 +197,7 @@ module.exports = {
     resetPassword,
     forgotPassword,
     register,
+    updateUser,
     getUserInfo,
     login
 };

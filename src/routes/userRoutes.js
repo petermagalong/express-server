@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const authorizeRoles = require("../middlewares/roleMiddleware");
 const verifyToken = require("../middlewares/authMiddleware");
-const { getUserInfo } = require("../controllers/authController");
+const { getUserInfo, updateUser } = require("../controllers/authController");
 const { tryCatch } = require("../utils/tryCatch");
+const { AuthValidation } = require("../validations/authValidation");
 
 // only admin can access this route
 router.get("/admin", verifyToken, authorizeRoles("admin"), (req, res) => {
@@ -21,5 +22,6 @@ router.get("/user", verifyToken, authorizeRoles("admin", "manager", "user"), (re
 });  
 
 router.get("/", verifyToken, tryCatch(getUserInfo));
+router.put("/",verifyToken, tryCatch(updateUser,AuthValidation.updateUserValidate));
 
 module.exports = router;

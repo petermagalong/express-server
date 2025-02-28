@@ -10,12 +10,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    role: {
+    firstName:{
         type: String,
         required: true,
-        enum: ["admin", "manager", "user"]
     },
-    firstName:{
+    address:{
         type: String,
         required: true,
     },
@@ -41,8 +40,8 @@ const userSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ["USER", "DOCTOR", "ADMIN"],
-        default: "USER"
+        enum: ["admin", "user", "dentist"],
+        default: "user"
     },
     avatar:{
         type: String,
