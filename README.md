@@ -27,16 +27,42 @@ Make sure you setup your `DATABASE` already before starting and using `REST API`
 $ npm start
 ```
 ## Folder Structure 
-src/
-  - config/ `(database connection / other configs)`
-  - controllers/ `(get the request data from models)`
-  - middlewares/ 
-  - models/ `(schema)`
-  - routes/ `(end point)` 
-  - utils/ `(store code architectural / small snippets)`
-  - validations/ `( input validation )`
-  - index.js
-  - .env
+```
+└── 📁src
+    └── 📁config
+        └── dbConnect.js
+    └── 📁controllers
+        └── authController.js
+        └── dentistController.js
+    └── 📁middlewares
+        └── authMiddleware.js
+        └── errorHandler.js
+        └── roleMiddleware.js
+    └── 📁models
+        └── bookingModel.js
+        └── dentistModel.js
+        └── parmacyModel.js
+        └── userModel.js
+    └── 📁routes
+        └── authRoutes.js
+        └── dentistRoutes.js
+        └── userRoutes.js
+    └── 📁utils
+        └── appError.js
+        └── constants.js
+        └── paginatedData.js
+        └── tryCatch.js
+    └── 📁validations
+        └── authValidation.js
+    └── index.js
+    └── .env
+    └── .gitignore
+    └── eslint.config.mjs
+    └── package-lock.json
+    └── package.json
+    └── README.md
+    └── request.http
+```
 ## References
 -Error handling 
   - https://expressjs.com/en/guide/error-handling.html
