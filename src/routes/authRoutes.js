@@ -5,8 +5,9 @@ const { AuthValidation } = require("../validations/authValidation");
 
 const router = express.Router();
 
-router.post("/register", tryCatch(register,AuthValidation.register));
-router.post("/login", tryCatch(login));
+router.post("/register", tryCatch(register,AuthValidation.registerValidate));
+
+router.post("/login", tryCatch(login, AuthValidation.loginValidate));
 router.post("/forgot-password", tryCatch(forgotPassword));
 router.put("/reset-password/:username/:token", tryCatch(resetPassword));
 
