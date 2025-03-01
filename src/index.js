@@ -14,11 +14,13 @@ app.use(express.json());
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const dentist = require("./routes/dentistRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 const errorHandler = require("./middlewares/errorHandler");
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/dentist", dentist);
+app.use("/api/bookings", bookingRoutes);
 
 app.use(errorHandler);
 // Start Server
